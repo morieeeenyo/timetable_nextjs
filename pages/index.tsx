@@ -1,4 +1,5 @@
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
+import { useState } from 'react';
 import Link from 'next/link';
 import path from 'path';
 import fs from 'fs';
@@ -10,10 +11,11 @@ import {
   Typography,
   Box,
   Button,
+  CircularProgress,
+  Alert,
+  Snackbar,
 } from '@mui/material';
-import ViewListIcon from '@mui/icons-material/ViewList';
-import DirectionsIcon from '@mui/icons-material/Directions';
-import CompareArrowsIcon from '@mui/icons-material/CompareArrows';
+import RefreshIcon from '@mui/icons-material/Refresh';
 
 interface Station {
   id: string;
@@ -34,15 +36,93 @@ export const getStaticProps: GetStaticProps<IndexProps> = async () => {
 };
 
 export default function Home({ stations }: InferGetStaticPropsType<typeof getStaticProps>) {
+  const [updating, setUpdating] = useState(false);
+  const [snackbar, setSnackbar] = useState<{
+    open: boolean;
+    message: string;
+    severity: 'success' | 'error';
+  }>({
+    open: false,
+    message: '',
+    severity: 'success',
+  });
+
+  const handleUpdateData = async () => {
+    setUpdating(true);
+    try {
+      const response = await fetch('/api/update-timetable', {
+        method: 'POST',
+      });
+
+      if (!response.ok) {
+        throw new Error('データ更新に失敗しました');
+      }
+
+      const result = await response.json();
+      setSnackbar({
+        open: true,
+        message: result.message || 'データを更新しました',
+        severity: 'success',
+      });
+
+      // ページをリロードしてデータを再取得
+      setTimeout(() => {
+        window.location.reload();
+      }, 1500);
+    } catch (error) {
+      setSnackbar({
+        open: true,
+        message: error instanceof Error ? error.message : 'エラーが発生しました',
+        severity: 'error',
+      });
+    } finally {
+      setUpdating(false);
+    }
+  };
+
+  const handleCloseSnackbar = () => {
+    setSnackbar({ ...snackbar, open: false });
+  };
+
   return (
     <>
-      <Typography variant="h4" component="h1" gutterBottom align="center" sx={{ mb: 4 }}>
+      <Typography variant="h4" component="h1" gutterBottom align="center" sx={{ mb: 2 }}>
         時刻表アプリ
       </Typography>
+
+      {/* Update Button */}
+      <Box sx={{ display: 'flex', justifyContent: 'center', mb: 4 }}>
+        <Button
+          variant="outlined"
+          startIcon={updating ? <CircularProgress size={20} /> : <RefreshIcon />}
+          onClick={handleUpdateData}
+          disabled={updating}
+          sx={{
+            borderWidth: 2,
+            '&:hover': {
+              borderWidth: 2,
+            },
+          }}
+        >
+          {updating ? '更新中...' : '時刻表データを更新'}
+        </Button>
+      </Box>
 
       <Typography variant="h5" component="h2" gutterBottom sx={{ mb: 3 }}>
         駅一覧
       </Typography>
+
+      {/* Snackbar for notifications */}
+      <Snackbar
+        open={snackbar.open}
+        autoHideDuration={6000}
+        onClose={handleCloseSnackbar}
+        anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+      >
+        <Alert onClose={handleCloseSnackbar} severity={snackbar.severity} sx={{ width: '100%' }}>
+          {snackbar.message}
+        </Alert>
+      </Snackbar>
 
       <Grid container spacing={3}>
         {stations.map((station) => (
