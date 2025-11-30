@@ -1,0 +1,228 @@
+{
+ "stations": [
+  {
+   "id": "hankai_abikomichi",
+   "name": "我孫子道",
+   "lineName": "阪堺電車",
+   "color": "#008000",
+   "timetables": [
+    {
+     "direction": "天王寺駅前 方面",
+     "departures": [
+      {"hour": 5, "minute": 0}, {"hour": 5, "minute": 6}, {"hour": 5, "minute": 12}, {"hour": 5, "minute": 18}, {"hour": 5, "minute": 24}, {"hour": 5, "minute": 30}, {"hour": 5, "minute": 36}, {"hour": 5, "minute": 42}, {"hour": 5, "minute": 48}, {"hour": 5, "minute": 54},
+      {"hour": 6, "minute": 0}, {"hour": 6, "minute": 6}, {"hour": 6, "minute": 12}, {"hour": 6, "minute": 18}, {"hour": 6, "minute": 24}, {"hour": 6, "minute": 30}, {"hour": 6, "minute": 36}, {"hour": 6, "minute": 42}, {"hour": 6, "minute": 48}, {"hour": 6, "minute": 54},
+      {"hour": 7, "minute": 0}, {"hour": 7, "minute": 5}, {"hour": 7, "minute": 10}, {"hour": 7, "minute": 15}, {"hour": 7, "minute": 20}, {"hour": 7, "minute": 25}, {"hour": 7, "minute": 30}, {"hour": 7, "minute": 35}, {"hour": 7, "minute": 40}, {"hour": 7, "minute": 45}, {"hour": 7, "minute": 50}, {"hour": 7, "minute": 55},
+      {"hour": 8, "minute": 0}, {"hour": 8, "minute": 5}, {"hour": 8, "minute": 10}, {"hour": 8, "minute": 15}, {"hour": 8, "minute": 20}, {"hour": 8, "minute": 25}, {"hour": 8, "minute": 30}, {"hour": 8, "minute": 35}, {"hour": 8, "minute": 40}, {"hour": 8, "minute": 45}, {"hour": 8, "minute": 50}, {"hour": 8, "minute": 55},
+      {"hour": 9, "minute": 0}, {"hour": 9, "minute": 8}, {"hour": 9, "minute": 16}, {"hour": 9, "minute": 24}, {"hour": 9, "minute": 32}, {"hour": 9, "minute": 40}, {"hour": 9, "minute": 48}, {"hour": 9, "minute": 56},
+      {"hour": 10, "minute": 4}, {"hour": 10, "minute": 12}, {"hour": 10, "minute": 20}, {"hour": 10, "minute": 28}, {"hour": 10, "minute": 36}, {"hour": 10, "minute": 44}, {"hour": 10, "minute": 52},
+      {"hour": 11, "minute": 0}, {"hour": 11, "minute": 8}, {"hour": 11, "minute": 16}, {"hour": 11, "minute": 24}, {"hour": 11, "minute": 32}, {"hour": 11, "minute": 40}, {"hour": 11, "minute": 48}, {"hour": 11, "minute": 56},
+      {"hour": 12, "minute": 4}, {"hour": 12, "minute": 12}, {"hour": 12, "minute": 20}, {"hour": 12, "minute": 28}, {"hour": 12, "minute": 36}, {"hour": 12, "minute": 44}, {"hour": 12, "minute": 52},
+      {"hour": 13, "minute": 0}, {"hour": 13, "minute": 8}, {"hour": 13, "minute": 16}, {"hour": 13, "minute": 24}, {"hour": 13, "minute": 32}, {"hour": 13, "minute": 40}, {"hour": 13, "minute": 48}, {"hour": 13, "minute": 56},
+      {"hour": 14, "minute": 4}, {"hour": 14, "minute": 12}, {"hour": 14, "minute": 20}, {"hour": 14, "minute": 28}, {"hour": 14, "minute": 36}, {"hour": 14, "minute": 44}, {"hour": 14, "minute": 52},
+      {"hour": 15, "minute": 0}, {"hour": 15, "minute": 8}, {"hour": 15, "minute": 16}, {"hour": 15, "minute": 24}, {"hour": 15, "minute": 32}, {"hour": 15, "minute": 40}, {"hour": 15, "minute": 48}, {"hour": 15, "minute": 56},
+      {"hour": 16, "minute": 4}, {"hour": 16, "minute": 12}, {"hour": 16, "minute": 20}, {"hour": 16, "minute": 28}, {"hour": 16, "minute": 36}, {"hour": 16, "minute": 44}, {"hour": 16, "minute": 52},
+      {"hour": 17, "minute": 0}, {"hour": 17, "minute": 6}, {"hour": 17, "minute": 12}, {"hour": 17, "minute": 18}, {"hour": 17, "minute": 24}, {"hour": 17, "minute": 30}, {"hour": 17, "minute": 36}, {"hour": 17, "minute": 42}, {"hour": 17, "minute": 48}, {"hour": 17, "minute": 54},
+      {"hour": 18, "minute": 0}, {"hour": 18, "minute": 6}, {"hour": 18, "minute": 12}, {"hour": 18, "minute": 18}, {"hour": 18, "minute": 24}, {"hour": 18, "minute": 30}, {"hour": 18, "minute": 36}, {"hour": 18, "minute": 42}, {"hour": 18, "minute": 48}, {"hour": 18, "minute": 54},
+      {"hour": 19, "minute": 0}, {"hour": 19, "minute": 8}, {"hour": 19, "minute": 16}, {"hour": 19, "minute": 24}, {"hour": 19, "minute": 32}, {"hour": 19, "minute": 40}, {"hour": 19, "minute": 48}, {"hour": 19, "minute": 56},
+      {"hour": 20, "minute": 4}, {"hour": 20, "minute": 12}, {"hour": 20, "minute": 20}, {"hour": 20, "minute": 28}, {"hour": 20, "minute": 36}, {"hour": 20, "minute": 44}, {"hour": 20, "minute": 52},
+      {"hour": 21, "minute": 0}, {"hour": 21, "minute": 10}, {"hour": 21, "minute": 20}, {"hour": 21, "minute": 30}, {"hour": 21, "minute": 40}, {"hour": 21, "minute": 50},
+      {"hour": 22, "minute": 0}, {"hour": 22, "minute": 12}, {"hour": 22, "minute": 24}, {"hour": 22, "minute": 36}, {"hour": 22, "minute": 48},
+      {"hour": 23, "minute": 0}, {"hour": 23, "minute": 15}, {"hour": 23, "minute": 30}, {"hour": 23, "minute": 45}
+     ]
+    },
+    {
+     "direction": "浜寺駅前 方面",
+     "departures": [
+      {"hour": 5, "minute": 0}, {"hour": 5, "minute": 12}, {"hour": 5, "minute": 24}, {"hour": 5, "minute": 36}, {"hour": 5, "minute": 48},
+      {"hour": 6, "minute": 0}, {"hour": 6, "minute": 12}, {"hour": 6, "minute": 24}, {"hour": 6, "minute": 36}, {"hour": 6, "minute": 48},
+      {"hour": 7, "minute": 0}, {"hour": 7, "minute": 10}, {"hour": 7, "minute": 20}, {"hour": 7, "minute": 30}, {"hour": 7, "minute": 40}, {"hour": 7, "minute": 50},
+      {"hour": 8, "minute": 0}, {"hour": 8, "minute": 10}, {"hour": 8, "minute": 20}, {"hour": 8, "minute": 30}, {"hour": 8, "minute": 40}, {"hour": 8, "minute": 50},
+      {"hour": 9, "minute": 0}, {"hour": 9, "minute": 15}, {"hour": 9, "minute": 30}, {"hour": 9, "minute": 45},
+      {"hour": 10, "minute": 0}, {"hour": 10, "minute": 15}, {"hour": 10, "minute": 30}, {"hour": 10, "minute": 45},
+      {"hour": 11, "minute": 0}, {"hour": 11, "minute": 15}, {"hour": 11, "minute": 30}, {"hour": 11, "minute": 45},
+      {"hour": 12, "minute": 0}, {"hour": 12, "minute": 15}, {"hour": 12, "minute": 30}, {"hour": 12, "minute": 45},
+      {"hour": 13, "minute": 0}, {"hour": 13, "minute": 15}, {"hour": 13, "minute": 30}, {"hour": 13, "minute": 45},
+      {"hour": 14, "minute": 0}, {"hour": 14, "minute": 15}, {"hour": 14, "minute": 30}, {"hour": 14, "minute": 45},
+      {"hour": 15, "minute": 0}, {"hour": 15, "minute": 15}, {"hour": 15, "minute": 30}, {"hour": 15, "minute": 45},
+      {"hour": 16, "minute": 0}, {"hour": 16, "minute": 15}, {"hour": 16, "minute": 30}, {"hour": 16, "minute": 45},
+      {"hour": 17, "minute": 0}, {"hour": 17, "minute": 12}, {"hour": 17, "minute": 24}, {"hour": 17, "minute": 36}, {"hour": 17, "minute": 48},
+      {"hour": 18, "minute": 0}, {"hour": 18, "minute": 12}, {"hour": 18, "minute": 24}, {"hour": 18, "minute": 36}, {"hour": 18, "minute": 48},
+      {"hour": 19, "minute": 0}, {"hour": 19, "minute": 15}, {"hour": 19, "minute": 30}, {"hour": 19, "minute": 45},
+      {"hour": 20, "minute": 0}, {"hour": 20, "minute": 15}, {"hour": 20, "minute": 30}, {"hour": 20, "minute": 45},
+      {"hour": 21, "minute": 0}, {"hour": 21, "minute": 20}, {"hour": 21, "minute": 40},
+      {"hour": 22, "minute": 0}, {"hour": 22, "minute": 24}, {"hour": 22, "minute": 48},
+      {"hour": 23, "minute": 12}, {"hour": 23, "minute": 36}
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nankai_suminoe",
+   "name": "住之江",
+   "lineName": "南海本線",
+   "color": "#003399",
+   "timetables": [
+    {
+     "direction": "なんば 方面",
+     "departures": [
+      {"hour": 5, "minute": 0}, {"hour": 5, "minute": 15}, {"hour": 5, "minute": 30}, {"hour": 5, "minute": 45},
+      {"hour": 6, "minute": 0}, {"hour": 6, "minute": 15}, {"hour": 6, "minute": 30}, {"hour": 6, "minute": 45},
+      {"hour": 7, "minute": 0}, {"hour": 7, "minute": 12}, {"hour": 7, "minute": 24}, {"hour": 7, "minute": 36}, {"hour": 7, "minute": 48},
+      {"hour": 8, "minute": 0}, {"hour": 8, "minute": 12}, {"hour": 8, "minute": 24}, {"hour": 8, "minute": 36}, {"hour": 8, "minute": 48},
+      {"hour": 9, "minute": 0}, {"hour": 9, "minute": 15}, {"hour": 9, "minute": 30}, {"hour": 9, "minute": 45},
+      {"hour": 10, "minute": 0}, {"hour": 10, "minute": 20}, {"hour": 10, "minute": 40},
+      {"hour": 11, "minute": 0}, {"hour": 11, "minute": 20}, {"hour": 11, "minute": 40},
+      {"hour": 12, "minute": 0}, {"hour": 12, "minute": 20}, {"hour": 12, "minute": 40},
+      {"hour": 13, "minute": 0}, {"hour": 13, "minute": 20}, {"hour": 13, "minute": 40},
+      {"hour": 14, "minute": 0}, {"hour": 14, "minute": 20}, {"hour": 14, "minute": 40},
+      {"hour": 15, "minute": 0}, {"hour": 15, "minute": 20}, {"hour": 15, "minute": 40},
+      {"hour": 16, "minute": 0}, {"hour": 16, "minute": 20}, {"hour": 16, "minute": 40},
+      {"hour": 17, "minute": 0}, {"hour": 17, "minute": 15}, {"hour": 17, "minute": 30}, {"hour": 17, "minute": 45},
+      {"hour": 18, "minute": 0}, {"hour": 18, "minute": 15}, {"hour": 18, "minute": 30}, {"hour": 18, "minute": 45},
+      {"hour": 19, "minute": 0}, {"hour": 19, "minute": 15}, {"hour": 19, "minute": 30}, {"hour": 19, "minute": 45},
+      {"hour": 20, "minute": 0}, {"hour": 20, "minute": 20}, {"hour": 20, "minute": 40},
+      {"hour": 21, "minute": 0}, {"hour": 21, "minute": 20}, {"hour": 21, "minute": 40},
+      {"hour": 22, "minute": 0}, {"hour": 22, "minute": 25}, {"hour": 22, "minute": 50},
+      {"hour": 23, "minute": 15}, {"hour": 23, "minute": 40}
+     ]
+    },
+    {
+     "direction": "和歌山市 方面",
+     "departures": [
+      {"hour": 5, "minute": 5}, {"hour": 5, "minute": 25}, {"hour": 5, "minute": 45},
+      {"hour": 6, "minute": 5}, {"hour": 6, "minute": 25}, {"hour": 6, "minute": 45},
+      {"hour": 7, "minute": 5}, {"hour": 7, "minute": 20}, {"hour": 7, "minute": 35}, {"hour": 7, "minute": 50},
+      {"hour": 8, "minute": 5}, {"hour": 8, "minute": 20}, {"hour": 8, "minute": 35}, {"hour": 8, "minute": 50},
+      {"hour": 9, "minute": 5}, {"hour": 9, "minute": 25}, {"hour": 9, "minute": 45},
+      {"hour": 10, "minute": 5}, {"hour": 10, "minute": 25}, {"hour": 10, "minute": 45},
+      {"hour": 11, "minute": 5}, {"hour": 11, "minute": 25}, {"hour": 11, "minute": 45},
+      {"hour": 12, "minute": 5}, {"hour": 12, "minute": 25}, {"hour": 12, "minute": 45},
+      {"hour": 13, "minute": 5}, {"hour": 13, "minute": 25}, {"hour": 13, "minute": 45},
+      {"hour": 14, "minute": 5}, {"hour": 14, "minute": 25}, {"hour": 14, "minute": 45},
+      {"hour": 15, "minute": 5}, {"hour": 15, "minute": 25}, {"hour": 15, "minute": 45},
+      {"hour": 16, "minute": 5}, {"hour": 16, "minute": 25}, {"hour": 16, "minute": 45},
+      {"hour": 17, "minute": 5}, {"hour": 17, "minute": 20}, {"hour": 17, "minute": 35}, {"hour": 17, "minute": 50},
+      {"hour": 18, "minute": 5}, {"hour": 18, "minute": 20}, {"hour": 18, "minute": 35}, {"hour": 18, "minute": 50},
+      {"hour": 19, "minute": 5}, {"hour": 19, "minute": 25}, {"hour": 19, "minute": 45},
+      {"hour": 20, "minute": 5}, {"hour": 20, "minute": 30}, {"hour": 20, "minute": 55},
+      {"hour": 21, "minute": 20}, {"hour": 21, "minute": 45},
+      {"hour": 22, "minute": 10}, {"hour": 22, "minute": 35},
+      {"hour": 23, "minute": 0}, {"hour": 23, "minute": 25}
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nankai_abikomae",
+   "name": "我孫子前",
+   "lineName": "南海高野線",
+   "color": "#f39c12",
+   "timetables": [
+    {
+     "direction": "なんば 方面",
+     "departures": [
+      {"hour": 5, "minute": 10}, {"hour": 5, "minute": 25}, {"hour": 5, "minute": 40}, {"hour": 5, "minute": 55},
+      {"hour": 6, "minute": 10}, {"hour": 6, "minute": 25}, {"hour": 6, "minute": 40}, {"hour": 6, "minute": 55},
+      {"hour": 7, "minute": 5}, {"hour": 7, "minute": 15}, {"hour": 7, "minute": 25}, {"hour": 7, "minute": 35}, {"hour": 7, "minute": 45}, {"hour": 7, "minute": 55},
+      {"hour": 8, "minute": 5}, {"hour": 8, "minute": 15}, {"hour": 8, "minute": 25}, {"hour": 8, "minute": 35}, {"hour": 8, "minute": 45}, {"hour": 8, "minute": 55},
+      {"hour": 9, "minute": 5}, {"hour": 9, "minute": 20}, {"hour": 9, "minute": 35}, {"hour": 9, "minute": 50},
+      {"hour": 10, "minute": 5}, {"hour": 10, "minute": 20}, {"hour": 10, "minute": 35}, {"hour": 10, "minute": 50},
+      {"hour": 11, "minute": 5}, {"hour": 11, "minute": 20}, {"hour": 11, "minute": 35}, {"hour": 11, "minute": 50},
+      {"hour": 12, "minute": 5}, {"hour": 12, "minute": 20}, {"hour": 12, "minute": 35}, {"hour": 12, "minute": 50},
+      {"hour": 13, "minute": 5}, {"hour": 13, "minute": 20}, {"hour": 13, "minute": 35}, {"hour": 13, "minute": 50},
+      {"hour": 14, "minute": 5}, {"hour": 14, "minute": 20}, {"hour": 14, "minute": 35}, {"hour": 14, "minute": 50},
+      {"hour": 15, "minute": 5}, {"hour": 15, "minute": 20}, {"hour": 15, "minute": 35}, {"hour": 15, "minute": 50},
+      {"hour": 16, "minute": 5}, {"hour": 16, "minute": 20}, {"hour": 16, "minute": 35}, {"hour": 16, "minute": 50},
+      {"hour": 17, "minute": 5}, {"hour": 17, "minute": 15}, {"hour": 17, "minute": 25}, {"hour": 17, "minute": 35}, {"hour": 17, "minute": 45}, {"hour": 17, "minute": 55},
+      {"hour": 18, "minute": 5}, {"hour": 18, "minute": 15}, {"hour": 18, "minute": 25}, {"hour": 18, "minute": 35}, {"hour": 18, "minute": 45}, {"hour": 18, "minute": 55},
+      {"hour": 19, "minute": 5}, {"hour": 19, "minute": 20}, {"hour": 19, "minute": 35}, {"hour": 19, "minute": 50},
+      {"hour": 20, "minute": 5}, {"hour": 20, "minute": 25}, {"hour": 20, "minute": 45},
+      {"hour": 21, "minute": 5}, {"hour": 21, "minute": 25}, {"hour": 21, "minute": 45},
+      {"hour": 22, "minute": 5}, {"hour": 22, "minute": 30}, {"hour": 22, "minute": 55},
+      {"hour": 23, "minute": 20}, {"hour": 23, "minute": 45}
+     ]
+    },
+    {
+     "direction": "高野山 方面",
+     "departures": [
+      {"hour": 5, "minute": 5}, {"hour": 5, "minute": 20}, {"hour": 5, "minute": 35}, {"hour": 5, "minute": 50},
+      {"hour": 6, "minute": 5}, {"hour": 6, "minute": 20}, {"hour": 6, "minute": 35}, {"hour": 6, "minute": 50},
+      {"hour": 7, "minute": 0}, {"hour": 7, "minute": 10}, {"hour": 7, "minute": 20}, {"hour": 7, "minute": 30}, {"hour": 7, "minute": 40}, {"hour": 7, "minute": 50},
+      {"hour": 8, "minute": 0}, {"hour": 8, "minute": 10}, {"hour": 8, "minute": 20}, {"hour": 8, "minute": 30}, {"hour": 8, "minute": 40}, {"hour": 8, "minute": 50},
+      {"hour": 9, "minute": 0}, {"hour": 9, "minute": 15}, {"hour": 9, "minute": 30}, {"hour": 9, "minute": 45},
+      {"hour": 10, "minute": 0}, {"hour": 10, "minute": 15}, {"hour": 10, "minute": 30}, {"hour": 10, "minute": 45},
+      {"hour": 11, "minute": 0}, {"hour": 11, "minute": 15}, {"hour": 11, "minute": 30}, {"hour": 11, "minute": 45},
+      {"hour": 12, "minute": 0}, {"hour": 12, "minute": 15}, {"hour": 12, "minute": 30}, {"hour": 12, "minute": 45},
+      {"hour": 13, "minute": 0}, {"hour": 13, "minute": 15}, {"hour": 13, "minute": 30}, {"hour": 13, "minute": 45},
+      {"hour": 14, "minute": 0}, {"hour": 14, "minute": 15}, {"hour": 14, "minute": 30}, {"hour": 14, "minute": 45},
+      {"hour": 15, "minute": 0}, {"hour": 15, "minute": 15}, {"hour": 15, "minute": 30}, {"hour": 15, "minute": 45},
+      {"hour": 16, "minute": 0}, {"hour": 16, "minute": 15}, {"hour": 16, "minute": 30}, {"hour": 16, "minute": 45},
+      {"hour": 17, "minute": 0}, {"hour": 17, "minute": 12}, {"hour": 17, "minute": 24}, {"hour": 17, "minute": 36}, {"hour": 17, "minute": 48},
+      {"hour": 18, "minute": 0}, {"hour": 18, "minute": 12}, {"hour": 18, "minute": 24}, {"hour": 18, "minute": 36}, {"hour": 18, "minute": 48},
+      {"hour": 19, "minute": 0}, {"hour": 19, "minute": 15}, {"hour": 19, "minute": 30}, {"hour": 19, "minute": 45},
+      {"hour": 20, "minute": 0}, {"hour": 20, "minute": 20}, {"hour": 20, "minute": 40},
+      {"hour": 21, "minute": 0}, {"hour": 21, "minute": 20}, {"hour": 21, "minute": 40},
+      {"hour": 22, "minute": 0}, {"hour": 22, "minute": 25}, {"hour": 22, "minute": 50},
+      {"hour": 23, "minute": 15}, {"hour": 23, "minute": 40}
+     ]
+    }
+   ]
+  },
+  {
+   "id": "jr_sugimotocho",
+   "name": "杉本町",
+   "lineName": "JR阪和線",
+   "color": "#e67e22",
+   "timetables": [
+    {
+     "direction": "天王寺 方面",
+     "departures": [
+      {"hour": 5, "minute": 8}, {"hour": 5, "minute": 23}, {"hour": 5, "minute": 38}, {"hour": 5, "minute": 53},
+      {"hour": 6, "minute": 8}, {"hour": 6, "minute": 23}, {"hour": 6, "minute": 38}, {"hour": 6, "minute": 53},
+      {"hour": 7, "minute": 3}, {"hour": 7, "minute": 13}, {"hour": 7, "minute": 23}, {"hour": 7, "minute": 33}, {"hour": 7, "minute": 43}, {"hour": 7, "minute": 53},
+      {"hour": 8, "minute": 3}, {"hour": 8, "minute": 13}, {"hour": 8, "minute": 23}, {"hour": 8, "minute": 33}, {"hour": 8, "minute": 43}, {"hour": 8, "minute": 53},
+      {"hour": 9, "minute": 3}, {"hour": 9, "minute": 18}, {"hour": 9, "minute": 33}, {"hour": 9, "minute": 48},
+      {"hour": 10, "minute": 3}, {"hour": 10, "minute": 18}, {"hour": 10, "minute": 33}, {"hour": 10, "minute": 48},
+      {"hour": 11, "minute": 3}, {"hour": 11, "minute": 18}, {"hour": 11, "minute": 33}, {"hour": 11, "minute": 48},
+      {"hour": 12, "minute": 3}, {"hour": 12, "minute": 18}, {"hour": 12, "minute": 33}, {"hour": 12, "minute": 48},
+      {"hour": 13, "minute": 3}, {"hour": 13, "minute": 18}, {"hour": 13, "minute": 33}, {"hour": 13, "minute": 48},
+      {"hour": 14, "minute": 3}, {"hour": 14, "minute": 18}, {"hour": 14, "minute": 33}, {"hour": 14, "minute": 48},
+      {"hour": 15, "minute": 3}, {"hour": 15, "minute": 18}, {"hour": 15, "minute": 33}, {"hour": 15, "minute": 48},
+      {"hour": 16, "minute": 3}, {"hour": 16, "minute": 18}, {"hour": 16, "minute": 33}, {"hour": 16, "minute": 48},
+      {"hour": 17, "minute": 3}, {"hour": 17, "minute": 13}, {"hour": 17, "minute": 23}, {"hour": 17, "minute": 33}, {"hour": 17, "minute": 43}, {"hour": 17, "minute": 53},
+      {"hour": 18, "minute": 3}, {"hour": 18, "minute": 13}, {"hour": 18, "minute": 23}, {"hour": 18, "minute": 33}, {"hour": 18, "minute": 43}, {"hour": 18, "minute": 53},
+      {"hour": 19, "minute": 3}, {"hour": 19, "minute": 18}, {"hour": 19, "minute": 33}, {"hour": 19, "minute": 48},
+      {"hour": 20, "minute": 3}, {"hour": 20, "minute": 23}, {"hour": 20, "minute": 43},
+      {"hour": 21, "minute": 3}, {"hour": 21, "minute": 23}, {"hour": 21, "minute": 43},
+      {"hour": 22, "minute": 3}, {"hour": 22, "minute": 28}, {"hour": 22, "minute": 53},
+      {"hour": 23, "minute": 18}, {"hour": 23, "minute": 43}
+     ]
+    },
+    {
+     "direction": "和歌山 方面",
+     "departures": [
+      {"hour": 5, "minute": 2}, {"hour": 5, "minute": 17}, {"hour": 5, "minute": 32}, {"hour": 5, "minute": 47},
+      {"hour": 6, "minute": 2}, {"hour": 6, "minute": 17}, {"hour": 6, "minute": 32}, {"hour": 6, "minute": 47},
+      {"hour": 7, "minute": 2}, {"hour": 7, "minute": 14}, {"hour": 7, "minute": 26}, {"hour": 7, "minute": 38}, {"hour": 7, "minute": 50},
+      {"hour": 8, "minute": 2}, {"hour": 8, "minute": 14}, {"hour": 8, "minute": 26}, {"hour": 8, "minute": 38}, {"hour": 8, "minute": 50},
+      {"hour": 9, "minute": 2}, {"hour": 9, "minute": 17}, {"hour": 9, "minute": 32}, {"hour": 9, "minute": 47},
+      {"hour": 10, "minute": 2}, {"hour": 10, "minute": 17}, {"hour": 10, "minute": 32}, {"hour": 10, "minute": 47},
+      {"hour": 11, "minute": 2}, {"hour": 11, "minute": 17}, {"hour": 11, "minute": 32}, {"hour": 11, "minute": 47},
+      {"hour": 12, "minute": 2}, {"hour": 12, "minute": 17}, {"hour": 12, "minute": 32}, {"hour": 12, "minute": 47},
+      {"hour": 13, "minute": 2}, {"hour": 13, "minute": 17}, {"hour": 13, "minute": 32}, {"hour": 13, "minute": 47},
+      {"hour": 14, "minute": 2}, {"hour": 14, "minute": 17}, {"hour": 14, "minute": 32}, {"hour": 14, "minute": 47},
+      {"hour": 15, "minute": 2}, {"hour": 15, "minute": 17}, {"hour": 15, "minute": 32}, {"hour": 15, "minute": 47},
+      {"hour": 16, "minute": 2}, {"hour": 16, "minute": 17}, {"hour": 16, "minute": 32}, {"hour": 16, "minute": 47},
+      {"hour": 17, "minute": 2}, {"hour": 17, "minute": 14}, {"hour": 17, "minute": 26}, {"hour": 17, "minute": 38}, {"hour": 17, "minute": 50},
+      {"hour": 18, "minute": 2}, {"hour": 18, "minute": 14}, {"hour": 18, "minute": 26}, {"hour": 18, "minute": 38}, {"hour": 18, "minute": 50},
+      {"hour": 19, "minute": 2}, {"hour": 19, "minute": 17}, {"hour": 19, "minute": 32}, {"hour": 19, "minute": 47},
+      {"hour": 20, "minute": 2}, {"hour": 20, "minute": 22}, {"hour": 20, "minute": 42},
+      {"hour": 21, "minute": 2}, {"hour": 21, "minute": 22}, {"hour": 21, "minute": 42},
+      {"hour": 22, "minute": 2}, {"hour": 22, "minute": 27}, {"hour": 22, "minute": 52},
+      {"hour": 23, "minute": 17}, {"hour": 23, "minute": 42}
+     ]
+    }
+   ]
+  }
+ ]
+}
