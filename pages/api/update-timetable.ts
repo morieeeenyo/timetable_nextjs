@@ -13,12 +13,17 @@ interface Timetable {
   departures: Departure[];
 }
 
+interface StationTimetables {
+  weekdays: Timetable[];
+  holidays: Timetable[];
+}
+
 interface Station {
   id: string;
   name: string;
   lineName: string;
   color: string;
-  timetables: Timetable[];
+  timetables: StationTimetables;
 }
 
 interface UpdateResponse {
@@ -31,6 +36,38 @@ interface ErrorResponse {
   error: string;
 }
 
+// Yahoo Transit Station IDs and Direction GIDs
+const STATION_CONFIG: Record<string, { id: string; directions: { name: string; gid: number }[] }> = {
+  hankai_abikomichi: {
+    id: '25809',
+    directions: [
+      { name: '天王寺駅前 方面', gid: 5690 },
+      { name: '浜寺駅前 方面', gid: 5691 },
+    ],
+  },
+  nankai_suminoe: {
+    id: '25989',
+    directions: [
+      { name: 'なんば 方面', gid: 3950 },
+      { name: '和歌山市 方面', gid: 3951 },
+    ],
+  },
+  nankai_abikomae: {
+    id: '25808',
+    directions: [
+      { name: 'なんば 方面', gid: 4010 },
+      { name: '高野山 方面', gid: 4011 },
+    ],
+  },
+  jr_sugimotocho: {
+    id: '25988',
+    directions: [
+      { name: '天王寺 方面', gid: 1720 },
+      { name: '和歌山 方面', gid: 1721 },
+    ],
+  },
+};
+
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<UpdateResponse | ErrorResponse>
@@ -42,32 +79,40 @@ export default async function handler(
   try {
     console.log('Starting timetable data update...');
 
-    // 既存のデータを読み込む
     const dataPath = path.join(process.cwd(), 'data', 'stations.json');
     const existingData = JSON.parse(fs.readFileSync(dataPath, 'utf8'));
     const stations: Station[] = existingData.stations;
 
-    // 各駅のデータを更新
     let updatedCount = 0;
     for (const station of stations) {
       try {
         console.log(`Updating ${station.name}...`);
 
-        // 各駅のスクレイピングを実行
-        const updatedTimetables = await scrapeTimetableForStation(station);
+        const config = STATION_CONFIG[station.id];
+        if (!config) {
+          console.log(`No configuration found for ${station.id}, skipping.`);
+          continue;
+        }
 
-        if (updatedTimetables && updatedTimetables.length > 0) {
-          station.timetables = updatedTimetables;
+        // Scrape Weekdays (kind=1)
+        const weekdaysTimetables = await scrapeTimetablesForStation(config, 1);
+
+        // Scrape Holidays (kind=4) - Sunday/Holiday
+        const holidaysTimetables = await scrapeTimetablesForStation(config, 4);
+
+        if (weekdaysTimetables.length > 0 && holidaysTimetables.length > 0) {
+          station.timetables = {
+            weekdays: weekdaysTimetables,
+            holidays: holidaysTimetables,
+          };
           updatedCount++;
           console.log(`Successfully updated ${station.name}`);
         }
       } catch (error) {
         console.error(`Error updating ${station.name}:`, error);
-        // 個別の駅のエラーはスキップして続行
       }
     }
 
-    // データをファイルに保存
     const updatedData = {
       stations: stations,
     };
@@ -89,67 +134,29 @@ export default async function handler(
   }
 }
 
-/**
- * 駅の時刻表をスクレイピングで取得する
- *
- * 注意: この実装は例示用です。実際には各鉄道会社の公式サイトや
- * 時刻表サイトから適切にデータを取得する必要があります。
- */
-async function scrapeTimetableForStation(station: Station): Promise<Timetable[]> {
-  // ここでは、各駅に応じた時刻表サイトからスクレイピングを行います
-  // 実装例として、駅名に基づいてスクレイピング先を決定
+async function scrapeTimetablesForStation(
+  config: { id: string; directions: { name: string; gid: number }[] },
+  kind: number
+): Promise<Timetable[]> {
+  const timetables: Timetable[] = [];
 
-  console.log(`Scraping timetable for ${station.name}...`);
+  for (const direction of config.directions) {
+    const url = `https://transit.yahoo.co.jp/timetable/${config.id}/${direction.gid}?kind=${kind}`;
+    console.log(`Scraping ${url} for ${direction.name}...`);
 
-  // 駅別のスクレイピングロジック
-  switch (station.id) {
-    case 'hankai_abikomichi':
-      return await scrapeHankaiTimetable(station);
-    case 'nankai_suminoe':
-      return await scrapeNankaiTimetable(station, '住之江');
-    case 'nankai_abikomae':
-      return await scrapeNankaiTimetable(station, '我孫子前');
-    case 'jr_sugimotocho':
-      return await scrapeJRTimetable(station);
-    default:
-      console.log(`No scraper implemented for ${station.id}`);
-      return station.timetables; // 既存データを維持
+    const departures = await scrapeYahooTimetable(url);
+    if (departures.length > 0) {
+      timetables.push({
+        direction: direction.name,
+        departures: departures,
+      });
+    }
   }
+
+  return timetables;
 }
 
-/**
- * 阪堺電車の時刻表をスクレイピング
- */
-async function scrapeHankaiTimetable(station: Station): Promise<Timetable[]> {
-  // 実装例: 阪堺電車の公式サイトからスクレイピング
-  // ここでは既存データを返す（実際のスクレイピングは鉄道会社のサイト構造に依存）
-  console.log('Hankai timetable scraping not implemented yet');
-  return station.timetables;
-}
-
-/**
- * 南海電鉄の時刻表をスクレイピング
- */
-async function scrapeNankaiTimetable(station: Station, stationName: string): Promise<Timetable[]> {
-  // 実装例: 南海電鉄の公式サイトからスクレイピング
-  console.log(`Nankai timetable scraping for ${stationName} not implemented yet`);
-  return station.timetables;
-}
-
-/**
- * JR西日本の時刻表をスクレイピング
- */
-async function scrapeJRTimetable(station: Station): Promise<Timetable[]> {
-  // 実装例: JR西日本の公式サイトからスクレイピング
-  console.log('JR timetable scraping not implemented yet');
-  return station.timetables;
-}
-
-/**
- * 汎用的な時刻表スクレイピング関数
- * Yahoo!路線情報などの時刻表ページからデータを取得する例
- */
-async function scrapeGenericTimetable(url: string): Promise<Departure[]> {
+async function scrapeYahooTimetable(url: string): Promise<Departure[]> {
   try {
     const response = await fetch(url, {
       headers: {
@@ -163,26 +170,54 @@ async function scrapeGenericTimetable(url: string): Promise<Departure[]> {
 
     const html = await response.text();
     const $ = cheerio.load(html);
-
     const departures: Departure[] = [];
 
-    // 時刻表の要素を探してパース
-    // 実際のサイト構造に応じて適切なセレクタを使用
-    $('.time, .departure-time').each((index, element) => {
-      const text = $(element).text().trim();
-      const match = text.match(/(\d{1,2}):(\d{2})/);
+    // Select the timetable rows
+    // Yahoo Transit structure: #tab-1 > .tbl-dia > tr (hours) > td (minutes)
+    // The minutes are inside <ul> <li> <a ...>minute</a> </li> </ul>
+    // Or sometimes directly in td depending on the view.
+    // Let's target the minute links which usually have class 'time' or similar, or just parse the text.
 
-      if (match) {
-        departures.push({
-          hour: parseInt(match[1]),
-          minute: parseInt(match[2]),
+    // Yahoo Transit usually has a table with id="tbl-dia-detail" or class="tbl-dia"
+    // Rows correspond to hours.
+
+    $('.tbl-dia tr').each((i, row) => {
+      // The first cell is the hour
+      const hourText = $(row).find('.col-hour').text().trim();
+      const hour = parseInt(hourText);
+
+      if (!isNaN(hour)) {
+        // The second cell contains the minutes
+        $(row).find('.col-min li').each((j, minItem) => {
+          // Extract minute. Sometimes it has destination info, e.g. "05[天]"
+          // We just want the number.
+          const minText = $(minItem).find('.time').text().trim(); // Usually inside .time class
+          // If .time doesn't exist, try direct text or other structure
+          const minuteStr = minText || $(minItem).text().trim().replace(/\D/g, ''); // Fallback
+
+          // Yahoo Transit minutes are often wrapped in <dt> or just text in <a>
+          // Let's look for the number at the start
+          const match = $(minItem).text().trim().match(/^(\d+)/);
+
+          if (match) {
+            departures.push({
+              hour: hour,
+              minute: parseInt(match[1]),
+            });
+          }
         });
       }
     });
 
+    // Sort departures just in case
+    departures.sort((a, b) => {
+      if (a.hour !== b.hour) return a.hour - b.hour;
+      return a.minute - b.minute;
+    });
+
     return departures;
   } catch (error) {
-    console.error('Generic scraping error:', error);
+    console.error(`Error scraping ${url}:`, error);
     return [];
   }
 }
