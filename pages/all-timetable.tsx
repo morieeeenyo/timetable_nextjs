@@ -12,10 +12,14 @@ import {
   Tab,
   List,
   ListItem,
+  ToggleButton,
+  ToggleButtonGroup,
 } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import TrainIcon from '@mui/icons-material/Train';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
+import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
+import WeekendIcon from '@mui/icons-material/Weekend';
 
 interface Departure {
   hour: number;
@@ -27,12 +31,17 @@ interface Timetable {
   departures: Departure[];
 }
 
+interface StationTimetables {
+  weekdays: Timetable[];
+  holidays: Timetable[];
+}
+
 interface Station {
   id: string;
   name: string;
   lineName: string;
   color: string;
-  timetables: Timetable[];
+  timetables: StationTimetables;
 }
 
 interface CombinedDeparture {
@@ -55,10 +64,18 @@ export const getStaticProps: GetStaticProps<AllTimetablePageProps> = async () =>
 
 export default function AllTimetablePage({ stations }: InferGetStaticPropsType<typeof getStaticProps>) {
   const [selectedTab, setSelectedTab] = useState(0);
+  const [scheduleType, setScheduleType] = useState<'weekdays' | 'holidays'>('weekdays');
   const [currentTime, setCurrentTime] = useState(new Date());
   const nextTrainRef = useRef<HTMLLIElement>(null);
 
-  // 現在時刻を1秒ごとに更新
+  // Initialize schedule type based on current day
+  useEffect(() => {
+    const day = new Date().getDay();
+    const isWeekend = day === 0 || day === 6; // 0 is Sunday, 6 is Saturday
+    setScheduleType(isWeekend ? 'holidays' : 'weekdays');
+  }, []);
+
+  // Update current time every second
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentTime(new Date());
@@ -66,29 +83,32 @@ export default function AllTimetablePage({ stations }: InferGetStaticPropsType<t
     return () => clearInterval(timer);
   }, []);
 
-  // 全ての発車時刻を収集してソート
+  // Collect and sort all departures based on schedule type
   const getAllDepartures = (): { northbound: CombinedDeparture[], southbound: CombinedDeparture[] } => {
     const all: CombinedDeparture[] = [];
 
     stations.forEach((station) => {
-      station.timetables.forEach((timetable) => {
-        timetable.departures.forEach((departure) => {
-          all.push({
-            station,
-            timetable,
-            departure,
-            timeInMinutes: departure.hour * 60 + departure.minute,
+      // Get timetables for the selected schedule type
+      const timetables = station.timetables[scheduleType];
+      
+      if (timetables) {
+        timetables.forEach((timetable) => {
+          timetable.departures.forEach((departure) => {
+            all.push({
+              station,
+              timetable,
+              departure,
+              timeInMinutes: departure.hour * 60 + departure.minute,
+            });
           });
         });
-      });
+      }
     });
 
-    // 時刻順にソート
+    // Sort chronologically
     all.sort((a, b) => a.timeInMinutes - b.timeInMinutes);
 
-    // 方向別に分類
-    // 北向き: なんば、天王寺方面
-    // 南向き: 和歌山、高野山、浜寺方面
+    // Filter by direction
     const northbound = all.filter((d) => {
       const dir = d.timetable.direction;
       return dir.includes('なんば') || dir.includes('天王寺');
@@ -105,7 +125,7 @@ export default function AllTimetablePage({ stations }: InferGetStaticPropsType<t
   const { northbound, southbound } = getAllDepartures();
   const currentList = selectedTab === 0 ? northbound : southbound;
 
-  // 次の発車時刻を見つける
+  // Find next train
   const findNextTrain = (list: CombinedDeparture[]) => {
     const currentMinutes = currentTime.getHours() * 60 + currentTime.getMinutes();
     return list.find((dep) => dep.timeInMinutes >= currentMinutes);
@@ -113,7 +133,7 @@ export default function AllTimetablePage({ stations }: InferGetStaticPropsType<t
 
   const nextTrain = findNextTrain(currentList);
 
-  // 次の発車時刻までスクロール
+  // Scroll to next train
   useEffect(() => {
     if (nextTrainRef.current) {
       nextTrainRef.current.scrollIntoView({
@@ -121,10 +141,19 @@ export default function AllTimetablePage({ stations }: InferGetStaticPropsType<t
         block: 'center',
       });
     }
-  }, [selectedTab]);
+  }, [selectedTab, scheduleType]);
 
   const handleTabChange = (_event: React.SyntheticEvent, newValue: number) => {
     setSelectedTab(newValue);
+  };
+
+  const handleScheduleTypeChange = (
+    _event: React.MouseEvent<HTMLElement>,
+    newType: 'weekdays' | 'holidays' | null,
+  ) => {
+    if (newType !== null) {
+      setScheduleType(newType);
+    }
   };
 
   const renderList = (list: CombinedDeparture[]) => {
@@ -270,12 +299,50 @@ export default function AllTimetablePage({ stations }: InferGetStaticPropsType<t
       <Box sx={{ bgcolor: 'primary.main', color: 'white', pb: 0 }}>
         <Container maxWidth="lg">
           <Box sx={{ pt: 2, pb: 2 }}>
-            <Typography variant="h4" component="h1" sx={{ fontWeight: 'bold', mb: 0.5 }}>
-              全駅時刻表
-            </Typography>
-            <Typography variant="subtitle1" sx={{ opacity: 0.9 }}>
-              全ての駅の発車時刻を統合表示
-            </Typography>
+            <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', mb: 2 }}>
+              <Box>
+                <Typography variant="h4" component="h1" sx={{ fontWeight: 'bold', mb: 0.5 }}>
+                  全駅時刻表
+                </Typography>
+                <Typography variant="subtitle1" sx={{ opacity: 0.9 }}>
+                  全ての駅の発車時刻を統合表示
+                </Typography>
+              </Box>
+
+              {/* Schedule Type Toggle */}
+              <ToggleButtonGroup
+                value={scheduleType}
+                exclusive
+                onChange={handleScheduleTypeChange}
+                aria-label="schedule type"
+                sx={{
+                  bgcolor: 'rgba(255, 255, 255, 0.2)',
+                  '& .MuiToggleButton-root': {
+                    color: 'white',
+                    borderColor: 'rgba(255, 255, 255, 0.5)',
+                    '&.Mui-selected': {
+                      bgcolor: 'white',
+                      color: 'primary.main',
+                      '&:hover': {
+                        bgcolor: 'rgba(255, 255, 255, 0.9)',
+                      },
+                    },
+                    '&:hover': {
+                      bgcolor: 'rgba(255, 255, 255, 0.3)',
+                    },
+                  },
+                }}
+              >
+                <ToggleButton value="weekdays" aria-label="weekdays">
+                  <CalendarTodayIcon sx={{ mr: 1, fontSize: 20 }} />
+                  平日
+                </ToggleButton>
+                <ToggleButton value="holidays" aria-label="holidays">
+                  <WeekendIcon sx={{ mr: 1, fontSize: 20 }} />
+                  土休日
+                </ToggleButton>
+              </ToggleButtonGroup>
+            </Box>
           </Box>
 
           {/* Tabs */}
